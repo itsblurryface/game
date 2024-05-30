@@ -11,11 +11,6 @@ const score0El = document.querySelector("#score--0");
 const score1El = document.querySelector("#score--1");
 let currentScore, scores, activePlayer, playing;
 
-
-
-
-
-
 // To hide the dice image at the start of the game.
 dice.classList.add("hidden");
 
@@ -60,7 +55,7 @@ holdBtn.addEventListener('click', function(){
     document.querySelector(`#current--${activePlayer}`).textContent = currentScore
     console.log(currentScore);
     
-    if(scores[activePlayer] > 20){
+    if(scores[activePlayer] > 100){
         document.querySelector(`.player--${activePlayer}`).classList.remove("player--active")
         document.querySelector(`.player--${activePlayer}`).classList.add("player--winner")
     }else{
@@ -95,6 +90,10 @@ diceRoll.addEventListener('click', function(){
         //The current score for the last active player becomes zero.
         currentScore= 0;
         document.querySelector(`#current--${activePlayer}`).textContent = currentScore;
+        if(scores[activePlayer] > 100){
+            document.querySelector(`.player--${activePlayer}`).classList.remove("player--active")
+            document.querySelector(`.player--${activePlayer}`).classList.add("player--winner")
+        }
         
         switchPlayer();
         
